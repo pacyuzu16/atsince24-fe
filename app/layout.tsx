@@ -72,7 +72,7 @@ export const metadata = {
     },
   },
   verification: {
-    google: "google-site-verification-code", // Replace with actual verification code
+    google: "google-site-verification-code", // Replace with actual verification code.
   },
   alternates: {
     canonical: "https://atsince24.com",
