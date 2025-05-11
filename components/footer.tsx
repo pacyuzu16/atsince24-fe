@@ -135,7 +135,7 @@ export default function Footer() {
           <p className="text-white/40 text-xs mt-2">
             Website designed & developed by{" "}
             <a
-              href="https://vainqueur.vercel.app"
+              href="https://www.michelvainqueur.com"
               target="_blank"
               rel="noopener noreferrer"
               className="text-black hover:text-white/70 transition-colors"
