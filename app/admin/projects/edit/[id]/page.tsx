@@ -57,7 +57,7 @@ export default function EditProjectPage() {
   const router = useRouter()
   const params = useParams()
   const { toast } = useToast()
-  const projectId = params.id as string
+  const projectId = params.id as keyof typeof mockProjects
 
   const [formData, setFormData] = useState({
     title: "",
@@ -231,6 +231,7 @@ export default function EditProjectPage() {
                       </div>
                       <button
                         type="button"
+                        title="Remove Image"
                         onClick={() => handleRemoveImage(index)}
                         className="absolute -top-2 -right-2 bg-red-500 text-white rounded-full p-1 opacity-0 group-hover:opacity-100 transition-opacity"
                       >

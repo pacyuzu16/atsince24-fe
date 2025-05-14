@@ -3,6 +3,7 @@ import Header from "@/components/header"
 import Footer from "@/components/footer"
 import WhatsAppButton from "@/components/whatsapp-button"
 import { ScrollToTop } from "@/components/scroll-to-top"
+import CountdownFinal from "@/components/countdown-final"
 
 export default function MainLayout({
   children,
@@ -11,11 +12,12 @@ export default function MainLayout({
 }>) {
   return (
     <div className="bg-white text-brand-dark min-h-screen">
-      <Header />
+      {/* <Header /> */}
       <main>{children}</main>
-      <Footer />
-      <WhatsAppButton />
-      <ScrollToTop />
+      {/* <Footer /> */}
+       <CountdownFinal />
+      {/* <WhatsAppButton /> */}
+      {/* <ScrollToTop /> */}
     </div>
   )
 }

@@ -8,12 +8,12 @@ import InstallationServices from "@/components/installation-services"
 export default function Home() {
   return (
     <>
-      <HeroCarousel />
+      {/* <HeroCarousel />
       <Cta/>
       <FeaturedProducts />
       <InstallationServices />
       <WhyChooseUs />
-      <Testimonials />
+      <Testimonials /> */}
     </>
   )
 }
