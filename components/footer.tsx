@@ -61,11 +61,11 @@ export default function Footer() {
                   Contact
                 </Link>
               </li>
-              <li>
+              {/* <li>
                 <Link href="/staff-login" className="text-white/70 hover:text-white transition-colors text-sm">
-                  Staff
+                  Admin
                 </Link>
-              </li>
+              </li> */}
             </ul>
           </div>
 
