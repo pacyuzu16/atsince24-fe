@@ -15,10 +15,10 @@ export const metadata = {
   metadataBase: new URL("https://atsince24.com"),
   title: {
     default: "@Since24 - The Art of Simple Life | Premium Electronic Appliances",
-    template: "%s | Since24",
+    template: "%s | atSince24",
   },
   description:
-    "Since24 provides premium electronic appliances and professional installation services including solar water heaters, automatic gate openers, and more for homes and businesses in Rwanda.",
+    "@Since24 provides premium electronic appliances and professional installation services including solar water heaters, automatic gate openers, and more for homes and businesses in Rwanda.",
   keywords: [
     "electronic appliances",
     "solar water heater",

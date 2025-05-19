@@ -22,13 +22,12 @@ export default function CountdownFinal() {
   useEffect(() => {
     setIsClient(true)
 
-    // Set target date to one month from now
-    const oneMonthFromNow = new Date()
-    oneMonthFromNow.setMonth(oneMonthFromNow.getMonth() + 1)
+    // Set target date to June 30, 2025
+    const targetDate = new Date("2025-06-13T00:00:00")
 
     const interval = setInterval(() => {
       const now = new Date()
-      const difference = oneMonthFromNow.getTime() - now.getTime()
+      const difference = targetDate.getTime() - now.getTime()
 
       if (difference <= 0) {
         clearInterval(interval)
