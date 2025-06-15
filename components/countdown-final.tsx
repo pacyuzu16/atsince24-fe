@@ -23,7 +23,7 @@ export default function CountdownFinal() {
     setIsClient(true)
 
     // Set target date to June 30, 2025
-    const targetDate = new Date("2025-06-23T00:00:00")
+    const targetDate = new Date("2025-07-07T00:00:00")
 
     const interval = setInterval(() => {
       const now = new Date()
