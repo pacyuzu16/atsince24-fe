@@ -19,44 +19,46 @@ const projects: Project[] = [
   {
     id: "solar-installation-residence",
     title: "Solar Water Heater Installation",
-    client: "Johnson Residence",
+    client: "Ngirimana",
     description:
-      "Installation of a 200L Pressurized Solar Water Heater system for a family home, providing hot water for a household of four while reducing energy costs.",
-    date: "March 2023",
-    location: "Westview Heights, CA",
+      "Installation of a Solar Water Heater system for a family home, providing hot water for a household while reducing energy costs.",
+    date: "February 2024",
+    location: "Nyamirambo",
     images: {
-      before: "/placeholder.svg?height=400&width=600",
-      after: "/placeholder.svg?height=400&width=600",
+      before: "https://res.cloudinary.com/ddlhho2lk/image/upload/v1750194473/%40since24/ivo1hwfgvi0n64nnsuny.png",
+      after: "https://res.cloudinary.com/ddlhho2lk/image/upload/v1750194470/%40since24/p85b2odbcozfynoqesem.png",
     },
-    services: ["Solar Water Heater Installation", "Plumbing Integration", "System Configuration"],
+    services: ["Solar Water Heater Installation"],
+  },
+  {
+    id: "solar-installation",
+    title: "Solar Water Heater Installation",
+    client: "Christophe",
+    description:
+      "Installation of a Solar Water Heater system for a family home.",
+    date: "March 2024",
+    location: "Masaka",
+    images: {
+      before: "https://res.cloudinary.com/ddlhho2lk/image/upload/v1751191735/%40since24/pibi3vyeonjtz0krw4rw.png",
+      after: "https://res.cloudinary.com/ddlhho2lk/image/upload/v1750194453/%40since24/eveaw0tofdzg9lhbywfu.png",
+    },
+    services: ["Solar Water Heater Installation"],
   },
   {
     id: "gate-automation-commercial",
-    title: "Commercial Gate Automation",
-    client: "Skyline Office Complex",
+    title: "Automatic Gate Opener",
+    client: "Uwimbabazi",
     description:
-      "Implementation of an automated gate system with access control for a busy office complex, enhancing security and streamlining entry for employees and visitors.",
-    date: "November 2022",
-    location: "Downtown Metro, NY",
+      "Implementation of an automated gate system with access control , enhancing security and streamlining entry.",
+    date: "2024",
+    location: "Kimironko",
     images: {
-      before: "/placeholder.svg?height=400&width=600",
-      after: "/placeholder.svg?height=400&width=600",
+      before: "https://res.cloudinary.com/ddlhho2lk/image/upload/v1751191714/%40since24/jpkfasuwqiyzd4cxjmbq.png",
+      after: "https://res.cloudinary.com/ddlhho2lk/image/upload/v1751191730/%40since24/txtj1pncuc6p4fso9xce.png",
     },
-    services: ["Automatic Gate Installation", "Access Control System", "Remote Management Setup"],
+    services: ["Automatic Gate Installation", "Access Control System"],
   },
-  {
-    id: "multi-unit-solar",
-    title: "Multi-Unit Solar Heating Solution",
-    client: "Sunrise Apartments",
-    description:
-      "Design and installation of a comprehensive solar water heating system for a 24-unit apartment building, providing efficient hot water while significantly reducing utility costs.",
-    date: "July 2023",
-    location: "Bayside, FL",
-    images: {
-      after: "/placeholder.svg?height=400&width=600",
-    },
-    services: ["System Design", "Solar Water Heater Installation", "Building Integration", "Maintenance Plan"],
-  },
+
 ]
 
 export default function OurWorkPage() {
@@ -117,7 +119,7 @@ export default function OurWorkPage() {
                           src={project.images.before || "/placeholder.svg"}
                           alt={`${project.title} - Before`}
                           fill
-                          className="object-cover"
+                          className="object-contain w-full h-full bg-[#134fbf]/40"
                         />
                       </div>
                     </div>
@@ -129,7 +131,7 @@ export default function OurWorkPage() {
                         src={project.images.after || "/placeholder.svg"}
                         alt={`${project.title} - After`}
                         fill
-                        className="object-cover"
+                        className="object-contain w-full h-full bg-[#134fbf]/40"
                       />
                     </div>
                   </div>

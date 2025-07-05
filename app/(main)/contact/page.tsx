@@ -27,13 +27,13 @@ const faqs: FAQ[] = [
     id: "warranty",
     question: "What warranty do your products come with?",
     answer:
-      "Our products typically come with a 2-5 year warranty, depending on the specific item. Extended warranty options are also available for purchase.",
+      "Our products typically come with a 3 year warranty, depending on the specific item. Extended warranty options are also available for purchase.",
   },
   {
     id: "service-areas",
     question: "Do you service areas outside of your main location?",
     answer:
-      "Yes, we provide installation and service in surrounding areas within a 50-mile radius of our main location. For locations beyond this range, please contact us for special arrangements.",
+      "Yes, we provide installation and service all over the country and outside the country in surrounding countries.",
   },
   {
     id: "solar-water-heater-maintenance",
@@ -113,12 +113,18 @@ export default function ContactPage() {
               <div className="bg-brand-blue text-white p-8 md:p-10">
                 <h2 className="text-2xl font-medium mb-6 border-b border-white/20 pb-4">Contact Information</h2>
 
-                <div className="space-y-8 mt-8">
+                <div className="space-y-4 mt-8">
                   <div className="flex items-start">
                     <MapPin className="h-6 w-6 text-white/80 mr-4 flex-shrink-0" />
                     <div>
                       <h3 className="text-white font-medium mb-1">Our Location</h3>
-                      <p className="text-white/70">Kigali, Rwanda</p>
+                      <a
+                        rel="noopener noreferrer" target="_blank"
+                        href="https://maps.app.goo.gl/hEsZGnZxR8vy25if6"
+                        className="text-white/70"
+                      >
+                       KN 8 Ave, Kigali - Muhima
+                      </a>
                     </div>
                   </div>
 
@@ -134,7 +140,7 @@ export default function ContactPage() {
                     <Mail className="h-6 w-6 text-white/80 mr-4 flex-shrink-0" />
                     <div>
                       <h3 className="text-white font-medium mb-1">Email</h3>
-                      <p className="text-white/70">info@since24.com</p>
+                      <p className="text-white/70">atsince24@gmail.com</p>
                     </div>
                   </div>
 
@@ -142,8 +148,7 @@ export default function ContactPage() {
                     <Clock className="h-6 w-6 text-white/80 mr-4 flex-shrink-0" />
                     <div>
                       <h3 className="text-white font-medium mb-1">Business Hours</h3>
-                      <p className="text-white/70">Monday - Friday: 9:00 AM - 6:00 PM</p>
-                      <p className="text-white/70">Saturday: 10:00 AM - 4:00 PM</p>
+                      <p className="text-white/70">Monday - Saturday: 8:00 AM - 7:00 PM</p>
                       <p className="text-white/70">Sunday: Closed</p>
                     </div>
                   </div>
@@ -185,7 +190,7 @@ export default function ContactPage() {
                           onChange={handleChange}
                           required
                           className="border-gray-300 focus:border-brand-blue focus:ring-brand-blue rounded-md"
-                          placeholder="John Doe"
+                          placeholder="Karangwa"
                         />
                       </div>
 
@@ -201,7 +206,7 @@ export default function ContactPage() {
                           onChange={handleChange}
                           required
                           className="border-gray-300 focus:border-brand-blue focus:ring-brand-blue rounded-md"
-                          placeholder="john@example.com"
+                          placeholder="karangwa@example.com"
                         />
                       </div>
                     </div>

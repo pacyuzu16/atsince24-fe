@@ -9,7 +9,7 @@ interface Testimonial {
   id: number
   name: string
   role: string
-  company: string
+  place: string
   avatar: string
   content: string
 }
@@ -17,30 +17,21 @@ interface Testimonial {
 const testimonials: Testimonial[] = [
   {
     id: 1,
-    name: "Sarah Johnson",
+    name: "NDAGIJIMANA Japhet",
     role: "Homeowner",
-    company: "Residential Client",
-    avatar: "/placeholder.svg?height=100&width=100",
+    place: "Rusizi District",
+    avatar: "https://res.cloudinary.com/ddlhho2lk/image/upload/v1751193848/%40since24/gwgyygxejfhfgukkidy0.webp",
     content:
-      "The solar water heater from @since24 has been a game-changer for our household. The installation was quick and professional, and we've seen a significant reduction in our energy bills.",
+      "The solar water heater from @since24 has been a game-changer for our household. The installation was quick and it's working perfectly.",
   },
   {
     id: 2,
-    name: "Michael Chen",
-    role: "Property Manager",
-    company: "Skyline Properties",
-    avatar: "/placeholder.svg?height=100&width=100",
+    name: "Christophe",
+    role: "Homeowner",
+    place: "Masaka District",
+    avatar: "https://res.cloudinary.com/ddlhho2lk/image/upload/v1751193848/%40since24/gwgyygxejfhfgukkidy0.webp",
     content:
-      "We've installed @since24's automatic gate systems across multiple properties. The reliability and quality of their products, combined with their excellent after-sales service, make them our go-to provider.",
-  },
-  {
-    id: 3,
-    name: "Priya Patel",
-    role: "Director",
-    company: "Green Living Spaces",
-    avatar: "/placeholder.svg?height=100&width=100",
-    content:
-      "As a company focused on eco-friendly living solutions, we're impressed with @since24's commitment to energy efficiency. Their products align perfectly with our sustainability goals.",
+      "We've installed @since24's automatic gate Opener and it's working perfectly with the remote control. The reliability and quality of their products make them a great choice.",
   },
 ]
 
@@ -120,7 +111,7 @@ export default function Testimonials() {
                   <div>
                     <h4 className="text-brand-dark font-medium">{testimonial.name}</h4>
                     <p className="text-gray-600 text-sm">
-                      {testimonial.role}, {testimonial.company}
+                      {testimonial.role} / {testimonial.place}
                     </p>
                   </div>
                 </div>
