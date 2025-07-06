@@ -13,12 +13,10 @@ interface Product {
   description: string
   image: string
   link: string
-  price: string
   comingSoon?: boolean
   variants?: {
     name: string
     description: string
-    price: string
   }[]
 }
 
@@ -27,29 +25,32 @@ const products: Product[] = [
     id: "solar-water-heater",
     name: "Solar Water Heater",
     description: "Eco-friendly water heating solution with pressurized and non-pressurized options.",
-    image: "/placeholder.svg?height=400&width=600",
+    image: "https://res.cloudinary.com/ddlhho2lk/image/upload/v1750194456/%40since24/mib2rxi2wgvnevhwsnry.jpg",
     link: "/products/solar-water-heater",
-    price: "Starting at RWF 750,000",
     variants: [
       {
-        name: "Pressurized Solar Water Heater (100L)",
-        description: "Ideal for regions with varying water pressure or cold climates.",
-        price: "RWF 750,000",
+        name: "Pressurized Solar Water Heater (150L)",
+        description: "suitable for multi-story buildings. Provides consistent water flow and maintains pressure throughout the plumbing system.",
       },
       {
         name: "Pressurized Solar Water Heater (200L)",
-        description: "Ideal for regions with varying water pressure or cold climates.",
-        price: "RWF 1,100,000",
+        description: "ideal for larger households. Provides consistent water flow and maintains pressure throughout the plumbing system.",
       },
       {
-        name: "Non-Pressurized Solar Water Heater (100L)",
-        description: "Perfect for warmer regions with consistent water supply.",
-        price: "RWF 600,000",
+        name: "Pressurized Solar Water Heater (300L)",
+        description: "perfect for commercial use or large families. Provides consistent water flow and maintains pressure throughout the plumbing system.",
+      },
+      {
+        name: "Non-Pressurized Solar Water Heater (150L)",
+        description: "best for single-story homes. More affordable and easier to install, but requires tank to be positioned above usage points.",
       },
       {
         name: "Non-Pressurized Solar Water Heater (200L)",
-        description: "Perfect for warmer regions with consistent water supply.",
-        price: "RWF 850,000",
+        description: "suitable for medium households. More affordable and easier to install, but requires tank to be positioned above usage points.",
+      },
+      {
+        name: "Non-Pressurized Solar Water Heater (300L)",
+        description: "ideal for larger families. More affordable and easier to install, but requires tank to be positioned above usage points.",
       },
     ],
   },
@@ -57,51 +58,37 @@ const products: Product[] = [
     id: "automatic-gate-opener",
     name: "Automatic Gate Opener",
     description: "Smart gate solutions for enhanced security and convenience.",
-    image: "/placeholder.svg?height=400&width=600",
+    image: "https://res.cloudinary.com/ddlhho2lk/image/upload/c_pad,ar_16:9/v1751200214/%40since24/mvcomqc5ife4jp6yt4eo.jpg",
     link: "/products/automatic-gate-opener",
-    price: "RWF 450,000",
   },
   {
     id: "gate-barrier",
     name: "Gate Barrier",
     description: "Advanced barrier systems for controlled access to your property.",
-    image: "/placeholder.svg?height=400&width=600",
+    image: "https://res.cloudinary.com/ddlhho2lk/image/upload/v1751224062/%40since24/qgpcjltuwjmhk4nrm56p.jpg",
     link: "/products/gate-barrier",
-    price: "RWF 650,000",
-    comingSoon: true,
   },
   {
     id: "air-conditioner",
     name: "Air Conditioner",
     description: "Energy-efficient cooling solutions for your home or office.",
-    image: "/placeholder.svg?height=400&width=600",
+    image: "https://res.cloudinary.com/ddlhho2lk/image/upload/v1751224403/%40since24/tyhxh3xfrmurxb7rexhz.webp",
     link: "/products/air-conditioner",
-    price: "RWF 550,000",
-    comingSoon: true,
   },
   {
     id: "solar-panel",
     name: "Solar Panel",
     description: "Harness solar energy to power your home or business.",
-    image: "/placeholder.svg?height=400&width=600",
+    image: "https://res.cloudinary.com/ddlhho2lk/image/upload/v1751224405/%40since24/wggpmnhx2i1d1v2cklxj.jpg",
     link: "/products/solar-panel",
-    price: "RWF 850,000",
     comingSoon: true,
   },
-  {
-    id: "security-camera",
-    name: "Security Camera System",
-    description: "Advanced surveillance solutions for your property.",
-    image: "/placeholder.svg?height=400&width=600",
-    link: "/products/security-camera",
-    price: "RWF 350,000",
-    comingSoon: true,
-  },
+
 ]
 
 export default function ProductsPage() {
   const [currentPage, setCurrentPage] = useState(1)
-  const productsPerPage = 3
+  const productsPerPage = 4
 
   // Calculate pagination
   const indexOfLastProduct = currentPage * productsPerPage
@@ -128,35 +115,33 @@ export default function ProductsPage() {
 
       <section className="py-16 bg-white">
         <div className="container mx-auto">
-          <div className="grid grid-cols-1 gap-12">
-            {currentProducts.map((product) => (
+          <div className="space-y-12">
+            {/* First product - full width */}
+            {currentProducts.length > 0 && (
               <div
-                key={product.id}
-                className={cn("bg-white rounded-lg overflow-hidden shadow-lg", product.comingSoon ? "relative" : "")}
+                className={cn("bg-white rounded-lg overflow-hidden shadow-lg", currentProducts[0].comingSoon ? "relative" : "")}
               >
-                {product.comingSoon && (
-                  <div className="absolute top-4 right-4 z-10 bg-brand-coral text-white text-xs font-medium px-2 py-1 rounded">
-                    Coming Soon
+                {currentProducts[0].comingSoon && (
+                  <div className="absolute top-4 right-4 z-10 bg-brand-dark text-red-500 text-xs font-medium px-2 py-1 rounded">
+                    Coming Soon !
                   </div>
                 )}
                 <div className="grid grid-cols-1 md:grid-cols-2">
                   <div className="relative h-64 md:h-auto">
-                    <Image src={product.image || "/placeholder.svg"} alt={product.name} fill className="object-cover" />
+                    <Image src={currentProducts[0].image || "/placeholder.svg"} alt={currentProducts[0].name} fill className="object-fill h-full w-full" />
                   </div>
                   <div className="p-8">
-                    <h2 className="text-2xl font-medium text-brand-dark mb-2">{product.name}</h2>
-                    <p className="text-brand-blue font-bold mb-4">{product.price}</p>
-                    <p className="text-gray-600 mb-6">{product.description}</p>
+                    <h2 className="text-2xl font-medium text-brand-dark mb-2">{currentProducts[0].name}</h2>
+                    <p className="text-gray-600 mb-6">{currentProducts[0].description}</p>
 
-                    {product.variants && (
+                    {currentProducts[0].variants && (
                       <div className="mb-6">
                         <h3 className="text-lg font-medium text-brand-dark mb-3">Available Variants</h3>
                         <ul className="space-y-3">
-                          {product.variants.map((variant, index) => (
+                          {currentProducts[0].variants.map((variant, index) => (
                             <li key={index} className="bg-gray-50 rounded p-3">
                               <div className="flex justify-between items-center mb-1">
                                 <h4 className="text-brand-dark font-medium">{variant.name}</h4>
-                                <span className="text-brand-blue font-bold">{variant.price}</span>
                               </div>
                               <p className="text-gray-600 text-sm">{variant.description}</p>
                             </li>
@@ -166,22 +151,61 @@ export default function ProductsPage() {
                     )}
 
                     <Link
-                      href={product.link}
+                      href={currentProducts[0].link}
                       className={cn(
                         "inline-flex items-center text-sm font-medium",
-                        product.comingSoon
+                        currentProducts[0].comingSoon
                           ? "text-gray-400 cursor-not-allowed"
                           : "text-brand-blue hover:text-brand-dark transition-colors",
                       )}
-                      onClick={(e) => product.comingSoon && e.preventDefault()}
+                      onClick={(e) => currentProducts[0].comingSoon && e.preventDefault()}
                     >
-                      {product.comingSoon ? "Notify Me When Available" : "View Product Details"}
+                      {currentProducts[0].comingSoon ? "Notify Me When Available" : "View Product Details"}
                       <ArrowRight className="ml-1 h-4 w-4" />
                     </Link>
                   </div>
                 </div>
               </div>
-            ))}
+            )}
+
+            {/* Remaining products - 2 columns */}
+            {currentProducts.length > 1 && (
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                {currentProducts.slice(1).map((product) => (
+                  <div
+                    key={product.id}
+                    className={cn("bg-white rounded-lg overflow-hidden shadow-lg", product.comingSoon ? "relative" : "")}
+                  >
+                    {product.comingSoon && (
+                      <div className="absolute top-4 right-4 z-10 bg-brand-dark text-red-500 text-xs font-medium px-2 py-1 rounded">
+                        Coming Soon !
+                      </div>
+                    )}
+                    <div className="relative h-48">
+                      <Image src={product.image || "/placeholder.svg"} alt={product.name} fill className="object-cover h-full w-full" />
+                    </div>
+                    <div className="p-6">
+                      <h2 className="text-xl font-medium text-brand-dark mb-2">{product.name}</h2>
+                      <p className="text-gray-600 mb-4 text-sm">{product.description}</p>
+
+                      <Link
+                        href={product.link}
+                        className={cn(
+                          "inline-flex items-center text-sm font-medium",
+                          product.comingSoon
+                            ? "text-gray-400 cursor-not-allowed"
+                            : "text-brand-blue hover:text-brand-dark transition-colors",
+                        )}
+                        onClick={(e) => product.comingSoon && e.preventDefault()}
+                      >
+                        {product.comingSoon ? "Notify Me When Available" : "View Product Details"}
+                        <ArrowRight className="ml-1 h-4 w-4" />
+                      </Link>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            )}
           </div>
 
           {/* Pagination */}
@@ -192,10 +216,9 @@ export default function ProductsPage() {
                 size="sm"
                 onClick={() => paginate(Math.max(1, currentPage - 1))}
                 disabled={currentPage === 1}
-                className="flex items-center"
+                className="flex items-center rounded-full w-10 h-10 p-0"
               >
-                <ChevronLeft className="h-4 w-4 mr-1" />
-                Prev
+                <ChevronLeft className="h-4 w-4" />
               </Button>
 
               <div className="flex items-center space-x-1">
@@ -205,7 +228,10 @@ export default function ProductsPage() {
                     variant={currentPage === number ? "default" : "outline"}
                     size="sm"
                     onClick={() => paginate(number)}
-                    className={cn("w-8 h-8 p-0", currentPage === number ? "bg-brand-blue text-white" : "text-gray-600")}
+                    className={cn(
+                      "w-10 h-10 p-0 rounded-full",
+                      currentPage === number ? "bg-brand-blue text-white" : "text-gray-600"
+                    )}
                   >
                     {number}
                   </Button>
@@ -217,10 +243,9 @@ export default function ProductsPage() {
                 size="sm"
                 onClick={() => paginate(Math.min(totalPages, currentPage + 1))}
                 disabled={currentPage === totalPages}
-                className="flex items-center"
+                className="flex items-center rounded-full w-10 h-10 p-0"
               >
-                Next
-                <ChevronRight className="h-4 w-4 ml-1" />
+                <ChevronRight className="h-4 w-4" />
               </Button>
             </div>
           </div>

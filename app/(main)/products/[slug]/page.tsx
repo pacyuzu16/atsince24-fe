@@ -1,7 +1,7 @@
 import Image from "next/image"
 import Link from "next/link"
 import { notFound } from "next/navigation"
-import { ChevronRight, Check, MessageCircle, Star } from "lucide-react"
+import { ChevronRight, Check, Star } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { NotifyButton } from "@/components/notify-button"
 
@@ -9,7 +9,6 @@ interface ProductVariant {
   id: string
   name: string
   capacity?: string
-  price: string
   features: string[]
 }
 
@@ -45,11 +44,6 @@ const products: { [key: string]: Product } = {
       "Our premium Solar Water Heaters harness the power of the sun to provide you with hot water while reducing your energy bills. Available in both pressurized and non-pressurized variants, these systems are designed for durability and efficiency in various climate conditions.",
     whyChoose: [
       {
-        title: "Superior Efficiency in All Climates",
-        description:
-          "Our evacuated vacuum tube technology ensures optimal heat absorption, providing hot water even on cloudy days or in colder climates. The vacuum insulation minimizes heat loss, outperforming traditional flat plate collectors.",
-      },
-      {
         title: "Significant Energy Savings",
         description:
           "By utilizing solar energy, you can reduce your energy bills by up to 50%. The system's design ensures rapid heat transfer and high absorption efficiency, leading to lower utility costs.",
@@ -73,27 +67,27 @@ const products: { [key: string]: Product } = {
     motivationalBanner:
       "🌞 Harness the Sun with Solar Water Heater: Efficient, Eco-Friendly, and Economical. Make the Switch Today!",
     images: [
-      "/placeholder.svg?height=600&width=800",
-      "/placeholder.svg?height=600&width=800",
-      "/placeholder.svg?height=600&width=800",
-      "/placeholder.svg?height=600&width=800",
+      "https://res.cloudinary.com/ddlhho2lk/image/upload/v1751191716/%40since24/ln7pbfnsqzlnz1kvxhyp.jpg",
+      "https://res.cloudinary.com/ddlhho2lk/image/upload/v1750194453/%40since24/t2yxljxcfnyo1zrjucde.png",
+      "https://res.cloudinary.com/ddlhho2lk/image/upload/v1751752837/%40since24/lwymqmaapzrjiyvmvzi5.webp",
+      "https://res.cloudinary.com/ddlhho2lk/image/upload/v1751752921/%40since24/okd2m1r8cqnukyccoinm.jpg",
     ],
     specs: {
       "Energy Source": "Solar",
       Material: "Stainless Steel",
-      Warranty: "5 Years",
-      Lifespan: "15-20 Years",
-      Installation: "Professional Installation Required",
-      Maintenance: "Annual Inspection Recommended",
+      "Capacity Options": "150L, 200L, 300L",
+      "Intelligent Controller": "Yes",
+      "Electric Backup": "1.5kW Electric Resistance",
+      "Temperature Display": "Water Level and Current Temperature",
+      "Solenoid Valve": "Included",
+      Warranty: "3 Years",
     },
     useCases: ["Residential homes", "Small businesses", "Hotels and guesthouses", "Eco-friendly buildings"],
     installationIncluded: true,
     variants: [
       {
-        id: "pressurized-100l",
+        id: "pressurized",
         name: "Pressurized Solar Water Heater",
-        capacity: "100L",
-        price: "RWF 750,000",
         features: [
           "Suitable for cold climates",
           "Works with varying water pressure",
@@ -102,29 +96,8 @@ const products: { [key: string]: Product } = {
         ],
       },
       {
-        id: "pressurized-200l",
-        name: "Pressurized Solar Water Heater",
-        capacity: "200L",
-        price: "RWF 1,100,000",
-        features: [
-          "Suitable for cold climates",
-          "Works with varying water pressure",
-          "Freeze protection",
-          "Digital temperature control",
-        ],
-      },
-      {
-        id: "non-pressurized-100l",
+        id: "non-pressurized",
         name: "Non-Pressurized Solar Water Heater",
-        capacity: "100L",
-        price: "RWF 600,000",
-        features: ["Ideal for warmer climates", "Simple installation", "Low maintenance", "Cost-effective solution"],
-      },
-      {
-        id: "non-pressurized-200l",
-        name: "Non-Pressurized Solar Water Heater",
-        capacity: "200L",
-        price: "RWF 850,000",
         features: ["Ideal for warmer climates", "Simple installation", "Low maintenance", "Cost-effective solution"],
       },
     ],
@@ -159,14 +132,19 @@ const products: { [key: string]: Product } = {
     motivationalBanner:
       "🔐 Upgrade Your Property with Automatic Gate Opener: Security, Convenience, and Peace of Mind in One Solution!",
     images: [
-      "/placeholder.svg?height=600&width=800",
-      "/placeholder.svg?height=600&width=800",
-      "/placeholder.svg?height=600&width=800",
-      "/placeholder.svg?height=600&width=800",
+      "https://res.cloudinary.com/ddlhho2lk/image/upload/v1750194482/%40since24/naddpdl4fqyt80zrhx6f.png",
+      "https://res.cloudinary.com/ddlhho2lk/image/upload/v1751748451/%40since24/ldo82fhudpd5kegi6ffy.png",
+      "https://res.cloudinary.com/ddlhho2lk/image/upload/v1751200214/%40since24/mvcomqc5ife4jp6yt4eo.jpg",
+      "https://res.cloudinary.com/ddlhho2lk/image/upload/v1751193054/%40since24/phft2gzekut3jtjxa9cm.jpg",
     ],
     specs: {
-      Power: "AC/DC with Battery Backup",
-      Material: "Aluminum and Steel",
+      "Weather Resistance": "Yes",
+      "Body Material": "Stainless Steel",
+      "Power Supply": "220V AC, 130W",
+      "Remote Control": "Included",
+      "Smart Control": "Bluetooth and WiFi",
+      "Safety Sensor": "Beam Photocell Sensor",
+      "Complete Kit Includes": "Motor with Control Panel, 2 Remote Controls, 2 Manual Override Keys, Mounting Base Plate, Instruction Manual, 4m Gear Racks",
       Warranty: "3 Years",
       "Remote Range": "Up to 100m",
       "Gate Weight": "Up to 500kg",
@@ -178,7 +156,6 @@ const products: { [key: string]: Product } = {
       {
         id: "standard",
         name: "Standard Gate Opener",
-        price: "RWF 450,000",
         features: [
           "Remote control operation",
           "Battery backup",
@@ -189,7 +166,6 @@ const products: { [key: string]: Product } = {
       {
         id: "premium",
         name: "Premium Gate Opener",
-        price: "RWF 650,000",
         features: [
           "Smartphone control",
           "Voice assistant integration",
@@ -225,10 +201,10 @@ const products: { [key: string]: Product } = {
     ],
     motivationalBanner: "🚧 Control Access with Precision: Our Gate Barriers Provide Security Without Compromise!",
     images: [
-      "/placeholder.svg?height=600&width=800",
-      "/placeholder.svg?height=600&width=800",
-      "/placeholder.svg?height=600&width=800",
-      "/placeholder.svg?height=600&width=800",
+      "https://res.cloudinary.com/ddlhho2lk/image/upload/v1751752254/%40since24/klcsrtbwuy6ukoi0v8wj.png",
+      "https://res.cloudinary.com/ddlhho2lk/image/upload/v1751224062/%40since24/qgpcjltuwjmhk4nrm56p.jpg",
+      "https://res.cloudinary.com/ddlhho2lk/image/upload/v1751192867/%40since24/gvnhkb7gdhatc4fjoqrh.jpg",
+      "https://res.cloudinary.com/ddlhho2lk/image/upload/v1751756120/%40since24/hkf1utp8qho3ftrmlcb6.jpg",
     ],
     specs: {
       Power: "AC with Battery Backup",
@@ -240,18 +216,15 @@ const products: { [key: string]: Product } = {
     },
     useCases: ["Parking lots", "Toll booths", "Office complexes", "Residential communities"],
     installationIncluded: true,
-    comingSoon: true,
     variants: [
       {
         id: "standard-barrier",
         name: "Standard Barrier",
-        price: "RWF 650,000",
         features: ["Fast operation", "Durable construction", "Safety sensors", "Manual override option"],
       },
       {
         id: "premium-barrier",
         name: "Premium Barrier",
-        price: "RWF 850,000",
         features: [
           "Advanced access control",
           "Integration with security systems",
@@ -288,18 +261,13 @@ const products: { [key: string]: Product } = {
         description:
           "Built-in filters remove dust, allergens, and bacteria, improving indoor air quality for better health.",
       },
-      {
-        title: "Elegant Design",
-        description:
-          "Sleek, modern units that complement any interior design while providing powerful cooling performance.",
-      },
     ],
     motivationalBanner: "❄️ Stay Cool and Comfortable Year-Round with Our Energy-Efficient Air Conditioners!",
     images: [
-      "/placeholder.svg?height=600&width=800",
-      "/placeholder.svg?height=600&width=800",
-      "/placeholder.svg?height=600&width=800",
-      "/placeholder.svg?height=600&width=800",
+      "https://res.cloudinary.com/ddlhho2lk/image/upload/v1751193179/%40since24/qoisxsvje4vcjnfvejkv.jpg",
+      "https://res.cloudinary.com/ddlhho2lk/image/upload/v1751224403/%40since24/tyhxh3xfrmurxb7rexhz.webp",
+      "https://res.cloudinary.com/ddlhho2lk/image/upload/v1751756655/%40since24/duoezg2ferox72zf7pq3.jpg",
+      "https://res.cloudinary.com/ddlhho2lk/image/upload/v1751756655/%40since24/zms0pgxofaljqjz42szf.webp",
     ],
     specs: {
       "Energy Rating": "5-Star",
@@ -311,20 +279,17 @@ const products: { [key: string]: Product } = {
     },
     useCases: ["Residential rooms", "Office spaces", "Commercial establishments", "Server rooms"],
     installationIncluded: true,
-    comingSoon: true,
     variants: [
       {
         id: "standard-ac",
         name: "Standard Air Conditioner",
         capacity: "1 Ton",
-        price: "RWF 550,000",
         features: ["Energy efficient", "Low noise operation", "Remote control", "Timer function"],
       },
       {
         id: "premium-ac",
         name: "Premium Air Conditioner",
         capacity: "1.5 Ton",
-        price: "RWF 750,000",
         features: ["Smart app control", "Voice assistant compatibility", "Air purification", "Sleep mode"],
       },
     ],
@@ -341,9 +306,8 @@ export default function ProductPage({ params }: { params: { slug: string } }) {
   // Function to create WhatsApp message with product details and website link
   const createWhatsAppMessage = (productName: string, variantName?: string) => {
     const productUrl = `https://since24.com/products/${params.slug}`
-    const message = `Hello, I'm interested in the ${productName}${
-      variantName ? ` (${variantName})` : ""
-    }. Could you provide more information about pricing and availability? I found it on your website: ${productUrl}`
+    const message = `Hello, I'm interested in the ${productName}${variantName ? ` (${variantName})` : ""
+      }. Could you provide more information about pricing and availability? I found it on your website: ${productUrl}`
     return `https://wa.me/+250788825011?text=${encodeURIComponent(message)}`
   }
 
@@ -409,6 +373,23 @@ export default function ProductPage({ params }: { params: { slug: string } }) {
                   </div>
                 ))}
               </div>
+
+              {/* Why Choose This Product Section - Moved under images */}
+              <div className="bg-white rounded-lg p-6 shadow-lg">
+                <h2 className="text-xl font-medium text-brand-dark mb-4 text-center">Why Choose {product.name}</h2>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  {product.whyChoose.map((reason, index) => (
+                    <div key={index} className="flex items-center p-4 bg-gray-50 rounded-lg">
+                      <div className="bg-brand-blue/10 p-2 rounded-full mr-4 flex-shrink-0">
+                        <Star className="h-3 w-3 text-brand-blue" />
+                      </div>
+                      <div>
+                        <h3 className="text-base font-medium text-brand-dark">{reason.title}</h3>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
             </div>
 
             <div>
@@ -455,60 +436,51 @@ export default function ProductPage({ params }: { params: { slug: string } }) {
             </div>
           </div>
 
-          {/* Why Choose This Product Section */}
-          <div className="mt-12 bg-gray-50 rounded-lg p-8 shadow-sm">
-            <h2 className="text-2xl font-medium text-brand-dark mb-6 text-center">Why Choose {product.name}</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              {product.whyChoose.map((reason, index) => (
-                <div key={index} className="bg-white p-6 rounded-lg shadow-sm">
-                  <div className="flex items-start">
-                    <div className="bg-brand-blue/10 p-2 rounded-full mr-4">
-                      <Star className="h-5 w-5 text-brand-blue" />
-                    </div>
-                    <div>
-                      <h3 className="text-lg font-medium text-brand-dark mb-2">{reason.title}</h3>
-                      <p className="text-gray-600">{reason.description}</p>
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-
           {product.variants && (
             <div className="mt-12">
-              <h2 className="text-2xl font-medium text-brand-dark mb-6">Available Variants</h2>
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                {product.variants.map((variant) => (
-                  <div key={variant.id} className="bg-white rounded-lg p-6 shadow-lg">
-                    <h3 className="text-xl font-medium text-brand-dark mb-2">{variant.name}</h3>
-                    {variant.capacity && <p className="text-brand-blue font-medium mb-2">{variant.capacity}</p>}
-                    <p className="text-brand-dark text-2xl font-bold mb-4">{variant.price}</p>
-                    <ul className="space-y-2 mb-6">
-                      {variant.features.map((feature, index) => (
-                        <li key={index} className="flex items-start">
-                          <Check className="h-4 w-4 text-brand-blue mr-2 mt-1" />
-                          <span className="text-gray-600 text-sm">{feature}</span>
-                        </li>
-                      ))}
-                    </ul>
-                    <Button
-                      variant="outline"
-                      className="w-full border-brand-blue text-brand-blue hover:bg-brand-blue/10"
-                      asChild
-                    >
-                      <a
-                        href={createWhatsAppMessage(product.name, variant.name)}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="flex items-center justify-center"
+              <h2 className="text-2xl font-medium text-brand-dark mb-8 text-center">Available Variants</h2>
+              <div className="max-w-4xl mx-auto">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                  {product.variants.map((variant) => (
+                    <div key={variant.id} className="bg-white rounded-xl p-8 shadow-lg border border-gray-100 hover:shadow-xl transition-shadow">
+                      <div className="text-center mb-6">
+                        <h3 className="text-2xl font-semibold text-brand-dark mb-2">{variant.name}</h3>
+                        {variant.capacity && (
+                          <div className="inline-block bg-brand-blue/10 text-brand-blue px-4 py-2 rounded-full text-sm font-medium">
+                            {variant.capacity}
+                          </div>
+                        )}
+                      </div>
+
+                      <div className="space-y-4 mb-8">
+                        {variant.features.map((feature, index) => (
+                          <div key={index} className="flex items-start">
+                            <Check className="h-5 w-5 text-brand-blue mr-3 mt-0.5 flex-shrink-0" />
+                            <span className="text-gray-700">{feature}</span>
+                          </div>
+                        ))}
+                      </div>
+
+                      <Button
+                        variant="outline"
+                        className="w-full border-brand-blue text-brand-blue hover:bg-brand-blue hover:text-white transition-colors py-3"
+                        asChild
                       >
-                        <MessageCircle className="mr-2 h-4 w-4" />
-                        Inquire
-                      </a>
-                    </Button>
-                  </div>
-                ))}
+                        <a
+                          href={createWhatsAppMessage(product.name, variant.name)}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="flex items-center justify-center"
+                        >
+                          <svg className="mr-2 h-5 w-5 text-green-500" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.885 3.488" />
+                          </svg>
+                          Inquire About This Variant/Product
+                        </a>
+                      </Button>
+                    </div>
+                  ))}
+                </div>
               </div>
             </div>
           )}

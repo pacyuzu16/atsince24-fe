@@ -13,7 +13,6 @@ interface Product {
   description: string
   image: string
   link: string
-  price: string
   comingSoon?: boolean
 }
 
@@ -22,35 +21,29 @@ const products: Product[] = [
     id: "solar-water-heater",
     name: "Solar Water Heater",
     description: "Eco-friendly water heating solution with pressurized and non-pressurized options.",
-    image: "/placeholder.svg?height=400&width=600",
+    image: "https://res.cloudinary.com/ddlhho2lk/image/upload/v1751191716/%40since24/ln7pbfnsqzlnz1kvxhyp.jpg",
     link: "/products/solar-water-heater",
-    price: "RWF 750,000",
   },
   {
     id: "automatic-gate-opener",
     name: "Automatic Gate Opener",
     description: "Smart gate solutions for enhanced security and convenience.",
-    image: "/placeholder.svg?height=400&width=600",
+    image: "https://res.cloudinary.com/ddlhho2lk/image/upload/v1751193054/%40since24/phft2gzekut3jtjxa9cm.jpg",
     link: "/products/automatic-gate-opener",
-    price: "RWF 450,000",
   },
   {
     id: "gate-barrier",
     name: "Gate Barrier",
     description: "Advanced barrier systems for controlled access to your property.",
-    image: "/placeholder.svg?height=400&width=600",
+    image: "https://res.cloudinary.com/ddlhho2lk/image/upload/v1751192867/%40since24/gvnhkb7gdhatc4fjoqrh.jpg",
     link: "/products/gate-barrier",
-    price: "RWF 650,000",
-    comingSoon: true,
   },
   {
     id: "air-conditioner",
     name: "Air Conditioner",
     description: "Energy-efficient cooling solutions for your home or office.",
-    image: "/placeholder.svg?height=400&width=600",
+    image: "https://res.cloudinary.com/ddlhho2lk/image/upload/v1751193179/%40since24/qoisxsvje4vcjnfvejkv.jpg",
     link: "/products/air-conditioner",
-    price: "RWF 550,000",
-    comingSoon: true,
   },
 ]
 
@@ -99,8 +92,8 @@ export default function FeaturedProducts() {
               style={{ animationDelay: `${index * 0.1}s` }}
             >
               {product.comingSoon && (
-                <div className="absolute top-4 right-4 z-10 bg-brand-coral text-white text-xs font-medium px-2 py-1 rounded">
-                  Coming Soon
+                <div className="absolute top-4 right-4 z-10 bg-brand-dark text-red-500 text-xs font-semibold px-2 py-1 rounded">
+                  Coming Soon !
                 </div>
               )}
               <div className="relative h-48">
@@ -109,7 +102,7 @@ export default function FeaturedProducts() {
               <div className="p-6">
                 <h3 className="text-xl font-medium text-brand-dark mb-2">{product.name}</h3>
                 <p className="text-gray-600 text-sm mb-2">{product.description}</p>
-                <p className="text-brand-blue font-bold mb-4">{product.price}</p>
+                {/* <p className="text-brand-blue font-bold mb-4">{product.price}</p> */}
                 <Link
                   href={product.link}
                   className={cn(

@@ -22,7 +22,7 @@ const slides: Slide[] = [
     id: 1,
     title: "Premium Solar Water Heaters",
     description: "Harness the power of the sun for efficient, eco-friendly water heating solutions.",
-    image: "/placeholder.svg?height=600&width=1200",
+    image: "https://res.cloudinary.com/ddlhho2lk/image/upload/v1750194453/%40since24/t2yxljxcfnyo1zrjucde.png",
     cta: {
       text: "Explore Products",
       link: "/products/solar-water-heater",
@@ -32,7 +32,7 @@ const slides: Slide[] = [
     id: 2,
     title: "Automatic Gate Systems",
     description: "Enhance your property's security and convenience with our smart gate solutions.",
-    image: "/placeholder.svg?height=600&width=1200",
+    image: "https://res.cloudinary.com/ddlhho2lk/image/upload/v1751191724/%40since24/p2hae2vw9lk6flouib08.png",
     cta: {
       text: "View Solutions",
       link: "/products/automatic-gate-opener",
@@ -42,7 +42,7 @@ const slides: Slide[] = [
     id: 3,
     title: "Professional Installations",
     description: "Our expert team ensures flawless setup and configuration of all our products.",
-    image: "/placeholder.svg?height=600&width=1200",
+    image: "https://res.cloudinary.com/ddlhho2lk/image/upload/c_crop,ar_16:9/v1750194487/%40since24/jgt7pyjj0yditru7qk59.png",
     cta: {
       text: "See Our Work",
       link: "/our-work",
@@ -70,7 +70,7 @@ export default function HeroCarousel() {
   }, [])
 
   return (
-    <div className="relative h-[90vh] w-full overflow-hidden pt-20">
+    <div className="relative h-[94vh] w-full overflow-hidden pt-20">
       {slides.map((slide, index) => (
         <div
           key={slide.id}
@@ -84,7 +84,7 @@ export default function HeroCarousel() {
             src={slide.image || "/placeholder.svg"}
             alt={slide.title}
             fill
-            className="object-cover"
+            className="object-fill h-full w-full"
             priority={index === 0}
           />
           <div className="relative z-20 h-full flex flex-col justify-center container mx-auto">

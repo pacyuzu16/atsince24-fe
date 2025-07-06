@@ -137,15 +137,15 @@ export default function EditProductPage() {
   const { toast } = useToast()
   const productId = params.id as string
 
-  const [product, setProduct] = useState(null)
+  const [product, setProduct] = useState<typeof mockProducts[keyof typeof mockProducts] | null>(null);
   const [isLoading, setIsLoading] = useState(true)
 
   useEffect(() => {
     // In a real app, this would be an API call
     // For now, we'll use mock data
-    if (productId && mockProducts[productId]) {
-      setProduct(mockProducts[productId])
-      setIsLoading(false)
+    if (productId && mockProducts[productId as keyof typeof mockProducts]) {
+      setProduct(mockProducts[productId as keyof typeof mockProducts]);
+      setIsLoading(false);
     } else {
       toast({
         title: "Product not found",
@@ -164,5 +164,5 @@ export default function EditProductPage() {
     )
   }
 
-  return <ProductForm initialData={product} isEditing />
+  return <ProductForm initialData={product ?? undefined} isEditing />
 }

@@ -78,7 +78,7 @@ export default function InstallationServices() {
           <div className="animate-on-scroll">
             <div className="relative h-80 rounded-lg overflow-hidden shadow-lg">
               <Image
-                src="/placeholder.svg?height=600&width=800"
+                src="https://res.cloudinary.com/ddlhho2lk/image/upload/v1750194472/%40since24/sijmu9pbbv16icl1xe7e.png"
                 alt="Professional Installation"
                 fill
                 className="object-cover"

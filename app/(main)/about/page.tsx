@@ -1,5 +1,51 @@
 import Image from "next/image"
 import { Check, Linkedin, Mail } from "lucide-react"
+import type { Metadata } from "next"
+
+export const metadata: Metadata = {
+  title: "About @Since24 - Our Story, Mission & Team | Electronic Appliances Rwanda",
+  description: "Learn about @Since24's journey, mission, and values. Founded in 2024, we're dedicated to simplifying everyday living through premium electronic appliances and professional installation services in Rwanda.",
+  keywords: [
+    "about @Since24",
+    "@Since24 company",
+    "@Since24 Rwanda",
+    "electronic appliances company Rwanda",
+    "solar water heater company Rwanda",
+    "gate opener company Rwanda",
+    "air conditioner company Rwanda",
+    "installation services company Rwanda",
+    "premium electronics Rwanda",
+    "sustainable technology company Rwanda",
+    "smart home solutions Rwanda",
+    "professional installation Rwanda",
+    "Kigali electronics company",
+    "Rwanda technology company",
+    "eco-friendly appliances Rwanda",
+    "energy saving solutions Rwanda"
+  ],
+  openGraph: {
+    title: "About @Since24 - Our Story, Mission & Team",
+    description: "Learn about @Since24's journey, mission, and values. Founded in 2024, we're dedicated to simplifying everyday living through premium electronic appliances and professional installation services in Rwanda.",
+    url: "https://atsince24.com/about",
+    images: [
+      {
+        url: "/images/og-image.jpg",
+        width: 1200,
+        height: 630,
+        alt: "@Since24 - About Our Company",
+      }
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "About @Since24 - Our Story, Mission & Team",
+    description: "Learn about @Since24's journey, mission, and values. Founded in 2024, we're dedicated to simplifying everyday living through premium electronic appliances and professional installation services in Rwanda.",
+    images: ["/images/og-image.jpg"],
+  },
+  alternates: {
+    canonical: "https://atsince24.com/about",
+  },
+}
 
 interface TeamMember {
   id: string
@@ -16,26 +62,15 @@ interface TeamMember {
 const teamMembers: TeamMember[] = [
   {
     id: "john-smith",
-    name: "John Smith",
+    name: "Aimé Sincere NIYONKURU",
     role: "Founder & CEO",
-    bio: "With over 15 years of experience in electronic engineering and product design, John founded @since24 with a vision to simplify everyday living through innovative technology.",
+    bio: "With years of experience , I Sincere founded @since24 with a vision to simplify everyday living through innovative technology.",
     image: "/placeholder.svg?height=400&width=400",
     contact: {
-      email: "john@since24.com",
-      linkedin: "https://linkedin.com/in/johnsmith",
+      email: "atsince24@gmail.com",
+      // linkedin: "https://linkedin.com/in/aimesincere",
     },
-  },
-  {
-    id: "sarah-johnson",
-    name: "Sarah Johnson",
-    role: "Chief Technology Officer",
-    bio: "Sarah leads our R&D team, bringing her expertise in sustainable technology and energy-efficient systems to drive innovation in our product development.",
-    image: "/placeholder.svg?height=400&width=400",
-    contact: {
-      email: "sarah@since24.com",
-      linkedin: "https://linkedin.com/in/sarahjohnson",
-    },
-  },
+  }
 ]
 
 export default function AboutPage() {
@@ -53,8 +88,9 @@ export default function AboutPage() {
 
       <section className="py-16 bg-white">
         <div className="container mx-auto">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div className="bg-white rounded-lg overflow-hidden shadow-lg">
+          {/* <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center"> */}
+          <div className="items-center text-center">
+            {/* <div className="bg-white rounded-lg overflow-hidden shadow-lg">
               <div className="relative aspect-square">
                 <Image
                   src="/placeholder.svg?height=600&width=600"
@@ -63,7 +99,7 @@ export default function AboutPage() {
                   className="object-cover"
                 />
               </div>
-            </div>
+            </div> */}
 
             <div>
               <h2 className="text-3xl font-light tracking-tight text-brand-dark mb-6">Our Story</h2>
@@ -72,11 +108,6 @@ export default function AboutPage() {
                   Founded in 2024, @since24 was born from a vision to transform how people interact with electronic
                   appliances in their daily lives. We recognized that while technology was advancing rapidly, many
                   electronic solutions remained complicated, inefficient, and aesthetically unappealing.
-                </p>
-                <p>
-                  Our founder, with over 15 years of experience in electronic engineering and design, assembled a team
-                  of like-minded professionals who shared the passion for creating products that seamlessly blend into
-                  modern lifestyles while delivering exceptional performance.
                 </p>
                 <p>
                   Today, @since24 stands as a testament to that vision, offering premium electronic appliances and
@@ -230,6 +261,96 @@ export default function AboutPage() {
           </div>
         </div>
       </section>
+
+      {/* Structured Data for About Page */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "AboutPage",
+            "name": "About @Since24",
+            "description": "Learn about @Since24's journey, mission, and values. Founded in 2024, we're dedicated to simplifying everyday living through premium electronic appliances and professional installation services in Rwanda.",
+            "url": "https://atsince24.com/about",
+            "mainEntity": {
+              "@type": "Organization",
+              "name": "@Since24",
+              "alternateName": "Since24",
+              "url": "https://atsince24.com",
+              "logo": "https://atsince24.com/images/logo.png",
+              "description": "Premium electronic appliances and professional installation services in Rwanda",
+              "foundingDate": "2024",
+              "address": {
+                "@type": "PostalAddress",
+                "addressCountry": "RW",
+                "addressRegion": "Kigali"
+              },
+              "contactPoint": {
+                "@type": "ContactPoint",
+                "contactType": "customer service",
+                "email": "atsince24@gmail.com",
+                "telephone": "+250 788 825 011"
+              },
+              "founder": {
+                "@type": "Person",
+                "name": "Aimé Sincere NIYONKURU",
+                "jobTitle": "Founder & CEO",
+                "description": "With years of experience, I Sincere founded @since24 with a vision to simplify everyday living through innovative technology."
+              },
+              "employee": [
+                {
+                  "@type": "Person",
+                  "name": "Aimé Sincere NIYONKURU",
+                  "jobTitle": "Founder & CEO",
+                  "description": "With years of experience, I Sincere founded @since24 with a vision to simplify everyday living through innovative technology."
+                }
+              ],
+              "serviceArea": {
+                "@type": "Country",
+                "name": "Rwanda"
+              },
+              "hasOfferCatalog": {
+                "@type": "OfferCatalog",
+                "name": "Electronic Appliances & Services",
+                "itemListElement": [
+                  {
+                    "@type": "Offer",
+                    "itemOffered": {
+                      "@type": "Product",
+                      "name": "Solar Water Heater",
+                      "description": "Eco-friendly water heating solution"
+                    }
+                  },
+                  {
+                    "@type": "Offer",
+                    "itemOffered": {
+                      "@type": "Product",
+                      "name": "Automatic Gate Opener",
+                      "description": "Smart gate solutions for enhanced security"
+                    }
+                  },
+                  {
+                    "@type": "Offer",
+                    "itemOffered": {
+                      "@type": "Product",
+                      "name": "Gate Barrier",
+                      "description": "Advanced barrier systems for controlled access"
+                    }
+                  },
+                  {
+                    "@type": "Offer",
+                    "itemOffered": {
+                      "@type": "Product",
+                      "name": "Air Conditioner",
+                      "description": "Energy-efficient cooling solutions"
+                    }
+                  }
+                ]
+              }
+            }
+          })
+        }}
+      />
     </>
   )
 }

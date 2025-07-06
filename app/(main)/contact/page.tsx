@@ -9,6 +9,7 @@ import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { Label } from "@/components/ui/label"
 import { cn } from "@/lib/utils"
+import { log } from "console"
 
 interface FAQ {
   id: string
@@ -27,13 +28,13 @@ const faqs: FAQ[] = [
     id: "warranty",
     question: "What warranty do your products come with?",
     answer:
-      "Our products typically come with a 2-5 year warranty, depending on the specific item. Extended warranty options are also available for purchase.",
+      "Our products typically come with a 3 year warranty, depending on the specific item. Extended warranty options are also available for purchase.",
   },
   {
     id: "service-areas",
     question: "Do you service areas outside of your main location?",
     answer:
-      "Yes, we provide installation and service in surrounding areas within a 50-mile radius of our main location. For locations beyond this range, please contact us for special arrangements.",
+      "Yes, we provide installation and service all over the country and outside the country in surrounding countries.",
   },
   {
     id: "solar-water-heater-maintenance",
@@ -77,22 +78,34 @@ export default function ContactPage() {
     setFormState((prev) => ({ ...prev, [name]: value }))
   }
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setIsSubmitting(true)
 
-    // Simulate form submission
-    setTimeout(() => {
-      setIsSubmitting(false)
-      setIsSubmitted(true)
-      setFormState({
-        name: "",
-        email: "",
-        phone: "",
-        subject: "",
-        message: "",
+    try {
+      const response = await fetch(process.env.NEXT_PUBLIC_FORMSPREE_CONTACT || '', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formState),
       })
-    }, 1500)
+
+      if (response.ok) {
+        setIsSubmitted(true)
+        setFormState({
+          name: "",
+          email: "",
+          phone: "",
+          subject: "",
+          message: "",
+        })
+      }
+    } catch (error) {
+      console.error('Error submitting form:', error)
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   return (
@@ -110,15 +123,21 @@ export default function ContactPage() {
         <div className="container mx-auto">
           <div className="max-w-5xl mx-auto bg-white rounded-xl shadow-xl overflow-hidden">
             <div className="grid grid-cols-1 md:grid-cols-3">
-              <div className="bg-brand-blue text-white p-8 md:p-10">
+              <div className="bg-blue-600 text-white p-8 md:p-10">
                 <h2 className="text-2xl font-medium mb-6 border-b border-white/20 pb-4">Contact Information</h2>
 
-                <div className="space-y-8 mt-8">
+                <div className="space-y-4 mt-8">
                   <div className="flex items-start">
                     <MapPin className="h-6 w-6 text-white/80 mr-4 flex-shrink-0" />
                     <div>
                       <h3 className="text-white font-medium mb-1">Our Location</h3>
-                      <p className="text-white/70">Kigali, Rwanda</p>
+                      <a
+                        rel="noopener noreferrer" target="_blank"
+                        href="https://maps.app.goo.gl/hEsZGnZxR8vy25if6"
+                        className="text-white/70"
+                      >
+                        KN 8 Ave, Kigali - Muhima
+                      </a>
                     </div>
                   </div>
 
@@ -134,7 +153,7 @@ export default function ContactPage() {
                     <Mail className="h-6 w-6 text-white/80 mr-4 flex-shrink-0" />
                     <div>
                       <h3 className="text-white font-medium mb-1">Email</h3>
-                      <p className="text-white/70">info@since24.com</p>
+                      <p className="text-white/70">atsince24@gmail.com</p>
                     </div>
                   </div>
 
@@ -142,8 +161,7 @@ export default function ContactPage() {
                     <Clock className="h-6 w-6 text-white/80 mr-4 flex-shrink-0" />
                     <div>
                       <h3 className="text-white font-medium mb-1">Business Hours</h3>
-                      <p className="text-white/70">Monday - Friday: 9:00 AM - 6:00 PM</p>
-                      <p className="text-white/70">Saturday: 10:00 AM - 4:00 PM</p>
+                      <p className="text-white/70">Monday - Saturday: 8:00 AM - 7:00 PM</p>
                       <p className="text-white/70">Sunday: Closed</p>
                     </div>
                   </div>
@@ -151,7 +169,7 @@ export default function ContactPage() {
               </div>
 
               <div className="col-span-2 p-8 md:p-10">
-                <h2 className="text-2xl font-medium text-brand-dark mb-6 border-b border-gray-200 pb-4">
+                <h2 className="text-2xl font-medium text-gray-900 mb-6 border-b border-gray-200 pb-4">
                   Send Us a Message
                 </h2>
 
@@ -160,12 +178,12 @@ export default function ContactPage() {
                     <div className="inline-flex items-center justify-center rounded-full bg-green-100 p-4 mb-6">
                       <Send className="h-8 w-8 text-green-600" />
                     </div>
-                    <h3 className="text-2xl font-medium text-brand-dark mb-3">Message Sent!</h3>
+                    <h3 className="text-2xl font-medium text-gray-900 mb-3">Message Sent!</h3>
                     <p className="text-gray-600 text-lg mb-8">
                       Thank you for reaching out. We'll get back to you as soon as possible.
                     </p>
                     <Button
-                      className="bg-brand-blue text-white hover:bg-brand-blue/90 px-6 py-2 text-lg"
+                      className="bg-blue-600 text-white hover:bg-blue-700 px-6 py-2 text-lg"
                       onClick={() => setIsSubmitted(false)}
                     >
                       Send Another Message
@@ -175,7 +193,7 @@ export default function ContactPage() {
                   <form onSubmit={handleSubmit} className="space-y-6">
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                       <div className="space-y-2">
-                        <Label htmlFor="name" className="text-brand-dark font-medium">
+                        <Label htmlFor="name" className="text-gray-900 font-medium">
                           Full Name
                         </Label>
                         <Input
@@ -184,13 +202,13 @@ export default function ContactPage() {
                           value={formState.name}
                           onChange={handleChange}
                           required
-                          className="border-gray-300 focus:border-brand-blue focus:ring-brand-blue rounded-md"
-                          placeholder="John Doe"
+                          className="border-gray-300 focus:border-blue-600 focus:ring-blue-600 rounded-md"
+                          placeholder="Karangwa"
                         />
                       </div>
 
                       <div className="space-y-2">
-                        <Label htmlFor="email" className="text-brand-dark font-medium">
+                        <Label htmlFor="email" className="text-gray-900 font-medium">
                           Email Address
                         </Label>
                         <Input
@@ -200,15 +218,15 @@ export default function ContactPage() {
                           value={formState.email}
                           onChange={handleChange}
                           required
-                          className="border-gray-300 focus:border-brand-blue focus:ring-brand-blue rounded-md"
-                          placeholder="john@example.com"
+                          className="border-gray-300 focus:border-blue-600 focus:ring-blue-600 rounded-md"
+                          placeholder="karangwa@example.com"
                         />
                       </div>
                     </div>
 
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                       <div className="space-y-2">
-                        <Label htmlFor="phone" className="text-brand-dark font-medium">
+                        <Label htmlFor="phone" className="text-gray-900 font-medium">
                           Phone Number (Optional)
                         </Label>
                         <Input
@@ -216,13 +234,13 @@ export default function ContactPage() {
                           name="phone"
                           value={formState.phone}
                           onChange={handleChange}
-                          className="border-gray-300 focus:border-brand-blue focus:ring-brand-blue rounded-md"
+                          className="border-gray-300 focus:border-blue-600 focus:ring-blue-600 rounded-md"
                           placeholder="+250 788 123 456"
                         />
                       </div>
 
                       <div className="space-y-2">
-                        <Label htmlFor="subject" className="text-brand-dark font-medium">
+                        <Label htmlFor="subject" className="text-gray-900 font-medium">
                           Subject
                         </Label>
                         <Input
@@ -231,14 +249,14 @@ export default function ContactPage() {
                           value={formState.subject}
                           onChange={handleChange}
                           required
-                          className="border-gray-300 focus:border-brand-blue focus:ring-brand-blue rounded-md"
+                          className="border-gray-300 focus:border-blue-600 focus:ring-blue-600 rounded-md"
                           placeholder="Product Inquiry"
                         />
                       </div>
                     </div>
 
                     <div className="space-y-2">
-                      <Label htmlFor="message" className="text-brand-dark font-medium">
+                      <Label htmlFor="message" className="text-gray-900 font-medium">
                         Your Message
                       </Label>
                       <Textarea
@@ -248,7 +266,7 @@ export default function ContactPage() {
                         onChange={handleChange}
                         required
                         rows={6}
-                        className="border-gray-300 focus:border-brand-blue focus:ring-brand-blue rounded-md"
+                        className="border-gray-300 focus:border-blue-600 focus:ring-blue-600 rounded-md"
                         placeholder="Please provide details about your inquiry..."
                       />
                     </div>
@@ -256,7 +274,7 @@ export default function ContactPage() {
                     <Button
                       type="submit"
                       className={cn(
-                        "w-full bg-brand-blue text-white hover:bg-brand-blue/90 py-2.5 text-lg font-medium rounded-md",
+                        "w-full bg-blue-600 text-white hover:bg-blue-700 py-2.5 text-lg font-medium rounded-md",
                         isSubmitting && "opacity-70 cursor-not-allowed",
                       )}
                       disabled={isSubmitting}
@@ -274,7 +292,7 @@ export default function ContactPage() {
       <section className="py-16 bg-white">
         <div className="container mx-auto">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-light tracking-tight text-brand-dark mb-6">Frequently Asked Questions</h2>
+            <h2 className="text-3xl font-light tracking-tight text-gray-900 mb-6">Frequently Asked Questions</h2>
             <p className="text-gray-600 max-w-2xl mx-auto">
               Find answers to common questions about our products, services, and policies.
             </p>
@@ -288,11 +306,11 @@ export default function ContactPage() {
                     onClick={() => toggleFAQ(faq.id)}
                     className="w-full flex items-center justify-between p-6 text-left"
                   >
-                    <h3 className="text-lg font-medium text-brand-dark">{faq.question}</h3>
+                    <h3 className="text-lg font-medium text-gray-900">{faq.question}</h3>
                     {expandedFAQs.includes(faq.id) ? (
-                      <ChevronUp className="h-5 w-5 text-brand-blue" />
+                      <ChevronUp className="h-5 w-5 text-blue-600" />
                     ) : (
-                      <ChevronDown className="h-5 w-5 text-brand-blue" />
+                      <ChevronDown className="h-5 w-5 text-blue-600" />
                     )}
                   </button>
 
