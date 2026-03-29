@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(wc -l /c/Users/Administrator/Documents/Projects/atsince24-fe-main/components/*.tsx)",
+      "Bash(grep -r \"TODO\\\\|FIXME\\\\|HACK\\\\|BUG\\\\|XXX\" /c/Users/Administrator/Documents/Projects/atsince24-fe-main/app --include=*.tsx --include=*.ts)"
+    ]
+  }
+}

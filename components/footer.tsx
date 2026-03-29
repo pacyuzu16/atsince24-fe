@@ -144,15 +144,8 @@ export default function Footer() {
         <div className="border-t border-white/10 mt-12 pt-6 text-center">
           <p className="text-white/50 text-xs">© {new Date().getFullYear()} @since24. All rights reserved.</p>
           <p className="text-white/40 text-xs mt-2">
-            Website designed & developed by{" "}
-            <a
-              href="https://www.michelvainqueur.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-black hover:text-white/70 transition-colors"
-            >
-              Vainqueur
-            </a>
+            Website designed & developed by pacyuzu
+           
           </p>
         </div>
       </div>
