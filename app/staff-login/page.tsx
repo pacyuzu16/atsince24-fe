@@ -29,8 +29,10 @@ export default function StaffLogin() {
       // Simulate API call
       await new Promise((resolve) => setTimeout(resolve, 1000))
 
-      // Mock credentials check
-      if (username === "admin" && password === "password123") {
+      // Credentials check via environment variables
+      const adminUsername = process.env.NEXT_PUBLIC_ADMIN_USERNAME
+      const adminPassword = process.env.NEXT_PUBLIC_ADMIN_PASSWORD
+      if (username === adminUsername && password === adminPassword) {
         // Set cookie for server-side auth check
         document.cookie = "isAuthenticated=true; path=/; max-age=86400" // 24 hours
 
